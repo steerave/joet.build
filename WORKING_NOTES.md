@@ -1,7 +1,7 @@
 # WORKING_NOTES.md — Sarun (Joe) Teeravechyan Portfolio Site
 
 ## Current Status
-> Project documents finalized and moved to root. Ready to begin Next.js build.
+> First build pass complete. All 9 sections rendering with correct copy, animations, and responsive layout. Ready for visual refinement pass.
 
 ---
 
@@ -75,3 +75,16 @@
 - Updated CLAUDE.md with accessibility, performance, responsive breakpoint standards
 - Updated global CLAUDE.md (model-agnostic co-author, commands section optional)
 - Ready to begin Next.js build
+
+### Session 2 (continued) — First Build Pass (2026-04-03)
+- Brainstormed design direction with visual companion (mockups in .superpowers/brainstorm/)
+- Decided: geometric grid hero (B), left-aligned, all four blue accent placements
+- Decided: alternating case study layouts, image placeholders for hero + case studies
+- Decided: scroll animations (fade-up, fade-left/right, scale-up, count-up)
+- Shifted color palette from gray-black to blue-tinted dark (new tokens in DESIGN_SYSTEM.md)
+- Wrote design spec and implementation plan
+- Scaffolded Next.js project (Tailwind v4 auto-installed — adapted theme to @theme block)
+- Built all 9 sections: Nav, Hero, CredibilityStrip, WhatIDo, CaseStudy×3, AIProjects, About, CTA, Footer
+- All scroll animations working, count-up animation working
+- Production build passes with zero errors
+- GitHub repo: steerave/professional-website
