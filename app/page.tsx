@@ -4,6 +4,7 @@ import CredibilityStrip from "@/components/CredibilityStrip";
 import WhatIDo from "@/components/WhatIDo";
 import CaseStudy, { type CaseStudyData } from "@/components/CaseStudy";
 import AIProjects from "@/components/AIProjects";
+import About from "@/components/About";
 
 const caseStudies: { data: CaseStudyData; reversed: boolean }[] = [
   {
@@ -102,6 +103,8 @@ export default function Home() {
         ))}
         <div className="section-glow" />
         <AIProjects />
+        <div className="section-glow" />
+        <About />
       </main>
     </>
   );
