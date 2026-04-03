@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import CredibilityStrip from "@/components/CredibilityStrip";
 import WhatIDo from "@/components/WhatIDo";
 import CaseStudy, { type CaseStudyData } from "@/components/CaseStudy";
+import AIProjects from "@/components/AIProjects";
 
 const caseStudies: { data: CaseStudyData; reversed: boolean }[] = [
   {
@@ -99,6 +100,8 @@ export default function Home() {
             <CaseStudy data={cs.data} reversed={cs.reversed} />
           </div>
         ))}
+        <div className="section-glow" />
+        <AIProjects />
       </main>
     </>
   );
