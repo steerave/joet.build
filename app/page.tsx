@@ -113,7 +113,7 @@ export default function Home() {
         <WhatIDo />
 
         {/* Case Studies overview */}
-        <div className="mx-auto max-w-content px-6 pt-20 md:px-10 lg:px-20 lg:pt-[120px]">
+        <div className="mx-auto max-w-content px-6 pb-16 pt-20 md:px-10 lg:pb-24 lg:px-20 lg:pt-[120px]">
           <ScrollReveal>
             <p className="text-[13px] font-semibold uppercase tracking-[1.5px] text-accent-light">
               Case Studies
