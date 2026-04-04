@@ -29,7 +29,7 @@ export default function AIProjects() {
   return (
     <section aria-label="AI Projects" className="mx-auto max-w-content px-6 py-20 md:px-10 lg:px-20 lg:py-[120px]">
       <ScrollReveal>
-        <p className="text-[13px] font-semibold uppercase tracking-[1.5px] text-accent-light">
+        <p className="font-mono text-[13px] font-semibold uppercase tracking-[1.5px] text-accent-light">
           Projects
         </p>
       </ScrollReveal>
@@ -46,18 +46,18 @@ export default function AIProjects() {
                 {project.title}
               </h3>
               <h4 className="mt-5 mb-2 text-[15px] font-semibold text-text-primary">What it does</h4>
-              <p className="text-[15px] text-text-body">{project.whatItDoes}</p>
+              <p className="font-serif text-[15px] text-text-body">{project.whatItDoes}</p>
               <h4 className="mt-5 mb-2 text-[15px] font-semibold text-text-primary">How it works</h4>
               <ul className="space-y-1">
                 {project.howItWorks.map((item) => (
-                  <li key={item} className="relative pl-4 text-[15px] text-text-body">
+                  <li key={item} className="relative pl-4 font-serif text-[15px] text-text-body">
                     <span className="absolute left-0 text-accent-light">•</span>
                     {item}
                   </li>
                 ))}
               </ul>
               <h4 className="mt-5 mb-2 text-[15px] font-semibold text-text-primary">Why it matters</h4>
-              <p className="text-[15px] text-text-body">{project.whyItMatters}</p>
+              <p className="font-serif text-[15px] text-text-body">{project.whyItMatters}</p>
             </div>
           </ScrollReveal>
         ))}

@@ -37,7 +37,7 @@ export default function CTA() {
 
       <div className="relative z-10 mx-auto max-w-content px-6 py-20 text-center md:px-10 lg:px-20 lg:py-[120px]">
         <ScrollReveal>
-          <p className="text-[13px] font-semibold uppercase tracking-[1.5px] text-accent-light">
+          <p className="font-mono text-[13px] font-semibold uppercase tracking-[1.5px] text-accent-light">
             Connect
           </p>
         </ScrollReveal>
@@ -47,7 +47,7 @@ export default function CTA() {
           </h2>
         </ScrollReveal>
         <ScrollReveal delay={200}>
-          <p className="mb-10 text-[17px] text-text-body">
+          <p className="mb-10 font-serif text-[17px] text-text-body">
             Open to opportunities and conversations around digital leadership, AI-driven execution, and product operations.
           </p>
         </ScrollReveal>

@@ -79,7 +79,7 @@ export default function CredibilityStrip() {
             }`}
           >
             <StatNumber stat={stat} active={active} />
-            <div className="mt-2 text-sm text-text-muted">{stat.label}</div>
+            <div className="mt-2 font-mono text-sm text-text-muted">{stat.label}</div>
           </div>
         ))}
       </div>

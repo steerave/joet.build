@@ -41,7 +41,7 @@ export default function Hero() {
         </p>
 
         {/* Description */}
-        <p className="hero-animate-3 mt-8 max-w-[600px] text-base leading-[1.7] text-text-body md:text-lg">
+        <p className="hero-animate-3 mt-8 max-w-[600px] font-serif text-base leading-[1.7] text-text-body md:text-lg">
           Senior digital leader delivering complex, high-visibility programs
           across North America — now focused on applying AI to transform how
           systems are designed, operated, and scaled.

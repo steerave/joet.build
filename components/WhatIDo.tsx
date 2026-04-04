@@ -19,7 +19,7 @@ export default function WhatIDo() {
   return (
     <section id="work" aria-label="What I do" className="mx-auto max-w-content px-6 py-20 md:px-10 lg:px-20 lg:py-[120px]">
       <ScrollReveal>
-        <p className="text-[13px] font-semibold uppercase tracking-[1.5px] text-accent-light">
+        <p className="font-mono text-[13px] font-semibold uppercase tracking-[1.5px] text-accent-light">
           Expertise
         </p>
       </ScrollReveal>
@@ -35,7 +35,7 @@ export default function WhatIDo() {
               <h3 className="mb-3 text-[22px] font-semibold text-text-primary">
                 {card.title}
               </h3>
-              <p className="text-base text-text-body">{card.body}</p>
+              <p className="font-serif text-base text-text-body">{card.body}</p>
             </div>
           </ScrollReveal>
         ))}

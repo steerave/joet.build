@@ -115,7 +115,7 @@ export default function Home() {
         {/* Case Studies overview */}
         <div className="mx-auto max-w-content px-6 pb-16 pt-20 md:px-10 lg:pb-24 lg:px-20 lg:pt-[120px]">
           <ScrollReveal>
-            <p className="text-[13px] font-semibold uppercase tracking-[1.5px] text-accent-light">
+            <p className="font-mono text-[13px] font-semibold uppercase tracking-[1.5px] text-accent-light">
               Case Studies
             </p>
           </ScrollReveal>
@@ -125,7 +125,7 @@ export default function Home() {
             </h2>
           </ScrollReveal>
           <ScrollReveal delay={200}>
-            <p className="max-w-[800px] text-text-body">
+            <p className="max-w-[800px] font-serif text-text-body">
               De-identified case studies representing large-scale digital
               execution across national North American programs. These examples highlight
               execution under complexity, transformation through technology, and
@@ -150,22 +150,22 @@ export default function Home() {
                 Across these programs, a consistent pattern emerges:
               </p>
               <ul className="space-y-2">
-                <li className="relative pl-4 text-[15px] text-text-body">
+                <li className="relative pl-4 font-serif text-[15px] text-text-body">
                   <span className="absolute left-0 text-accent-light">•</span>
                   Leading execution under complexity and scale
                 </li>
-                <li className="relative pl-4 text-[15px] text-text-body">
+                <li className="relative pl-4 font-serif text-[15px] text-text-body">
                   <span className="absolute left-0 text-accent-light">•</span>
                   Navigating constraints through structured systems and risk
                   management
                 </li>
-                <li className="relative pl-4 text-[15px] text-text-body">
+                <li className="relative pl-4 font-serif text-[15px] text-text-body">
                   <span className="absolute left-0 text-accent-light">•</span>
                   Applying real-time decision-making to maintain stability and
                   performance
                 </li>
               </ul>
-              <p className="mt-4 text-text-body">
+              <p className="mt-4 font-serif text-text-body">
                 These experiences now inform a broader focus on applying AI to
                 further enhance execution, automation, and operational
                 intelligence.

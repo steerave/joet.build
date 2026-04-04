@@ -21,7 +21,7 @@ export default function CaseStudy({ data, reversed = false }: CaseStudyProps) {
     <section aria-label={`Case study: ${data.title}`} className="border-t border-border">
       <div className="mx-auto max-w-content px-6 py-20 md:px-10 lg:px-20 lg:py-[120px]">
         <ScrollReveal>
-          <p className="text-[13px] font-semibold uppercase tracking-[1.5px] text-accent-light">
+          <p className="font-mono text-[13px] font-semibold uppercase tracking-[1.5px] text-accent-light">
             Case Study
           </p>
         </ScrollReveal>
@@ -31,10 +31,8 @@ export default function CaseStudy({ data, reversed = false }: CaseStudyProps) {
             ? "lg:grid-cols-[1fr_1.3fr]"
             : "lg:grid-cols-[1.3fr_1fr]"
         }`}>
-          {/* Image placeholder — renders first in DOM for reversed layout */}
           {reversed && <ImagePlaceholder animation="scale-up" />}
 
-          {/* Text content */}
           <div>
             <ScrollReveal animation={textAnim}>
               <h3 className="text-[32px] font-bold leading-[1.2] text-text-primary">
@@ -43,7 +41,7 @@ export default function CaseStudy({ data, reversed = false }: CaseStudyProps) {
             </ScrollReveal>
 
             <ScrollReveal animation={textAnim} delay={100}>
-              <p className="mb-10 mt-4 text-text-body">{data.overview}</p>
+              <p className="mb-10 mt-4 font-serif text-text-body">{data.overview}</p>
             </ScrollReveal>
 
             <ScrollReveal animation={textAnim} delay={200}>
@@ -52,7 +50,7 @@ export default function CaseStudy({ data, reversed = false }: CaseStudyProps) {
                   <h4 className="mb-3 text-lg font-semibold text-text-primary">Challenge</h4>
                   <ul className="space-y-1.5">
                     {data.challenge.map((item) => (
-                      <li key={item} className="relative pl-4 text-[15px] text-text-body">
+                      <li key={item} className="relative pl-4 font-serif text-[15px] text-text-body">
                         <span className="absolute left-0 text-accent-light">•</span>
                         {item}
                       </li>
@@ -63,7 +61,7 @@ export default function CaseStudy({ data, reversed = false }: CaseStudyProps) {
                   <h4 className="mb-3 text-lg font-semibold text-text-primary">What I Did</h4>
                   <ul className="space-y-1.5">
                     {data.whatIDid.map((item) => (
-                      <li key={item} className="relative pl-4 text-[15px] text-text-body">
+                      <li key={item} className="relative pl-4 font-serif text-[15px] text-text-body">
                         <span className="absolute left-0 text-accent-light">•</span>
                         {item}
                       </li>
@@ -78,7 +76,7 @@ export default function CaseStudy({ data, reversed = false }: CaseStudyProps) {
                 <h4 className="mb-3 text-lg font-semibold text-text-primary">Impact</h4>
                 <ul className="space-y-1">
                   {data.impact.map((item) => (
-                    <li key={item} className="relative pl-4 text-[15px] text-text-body">
+                    <li key={item} className="relative pl-4 font-serif text-[15px] text-text-body">
                       <span className="absolute left-0 text-accent-light">•</span>
                       {item}
                     </li>
@@ -88,19 +86,18 @@ export default function CaseStudy({ data, reversed = false }: CaseStudyProps) {
             </ScrollReveal>
 
             <ScrollReveal delay={400}>
-              <p className="mb-3 border-l-[3px] border-accent pl-4 text-lg font-semibold italic text-text-primary">
+              <p className="mb-3 border-l-[3px] border-accent pl-4 font-serif text-lg font-semibold italic text-text-primary">
                 {data.insight}
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={500}>
-              <p className="text-[13px] text-text-muted">
+              <p className="font-mono text-[13px] text-text-muted">
                 Additional details available upon request.
               </p>
             </ScrollReveal>
           </div>
 
-          {/* Image placeholder — renders second for non-reversed layout */}
           {!reversed && <ImagePlaceholder animation="scale-up" />}
         </div>
       </div>
@@ -112,7 +109,7 @@ function ImagePlaceholder({ animation }: { animation: "scale-up" }) {
   return (
     <ScrollReveal animation={animation} delay={100}>
       <div className="flex min-h-[320px] items-center justify-center rounded-lg border border-border bg-[linear-gradient(135deg,#0f1520_0%,#1a2a3a_40%,#0f1520_100%)] shadow-[0_8px_40px_rgba(0,0,0,0.3),0_0_40px_rgba(74,111,165,0.04)] lg:sticky lg:top-[100px]">
-        <span className="text-xs uppercase tracking-[2px] text-accent-light/50">
+        <span className="font-mono text-xs uppercase tracking-[2px] text-accent-light/50">
           Case Study Image
         </span>
       </div>
