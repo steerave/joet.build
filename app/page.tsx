@@ -127,7 +127,7 @@ export default function Home() {
           <ScrollReveal delay={200}>
             <p className="max-w-[800px] text-text-body">
               De-identified case studies representing large-scale digital
-              execution across national programs. These examples highlight
+              execution across national North American programs. These examples highlight
               execution under complexity, transformation through technology, and
               real-time operational leadership.
             </p>
