@@ -29,14 +29,14 @@ export default function Hero() {
       {/* Content — single column, centered */}
       <div className="relative z-[2] mx-auto flex min-h-[90vh] max-w-content flex-col items-center justify-center px-6 py-[120px] text-center md:px-10 lg:px-20">
         {/* Name — the hero */}
-        <h1 className="hero-animate-1 text-5xl font-bold leading-[1.05] tracking-tight text-text-primary md:text-7xl lg:text-[80px]">
+        <h1 className="hero-animate-1 text-5xl font-extrabold uppercase leading-[0.95] tracking-[0.04em] text-text-primary md:text-7xl lg:text-[84px]">
           Sarun (Joe)
           <br />
           Teeravechyan
         </h1>
 
         {/* Title / subtitle */}
-        <p className="hero-animate-2 mt-5 text-lg font-medium tracking-wide text-accent-light md:text-xl lg:text-[22px]">
+        <p className="hero-animate-2 mt-6 font-mono text-sm uppercase tracking-[0.2em] text-accent-light md:text-base">
           Digital Leader &amp; AI Systems Builder
         </p>
 
