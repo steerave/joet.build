@@ -37,6 +37,7 @@ const caseStudies: { data: CaseStudyData; reversed: boolean }[] = [
       ],
       insight:
         "Execution at scale is driven not by individual components, but by how effectively the system is coordinated end-to-end.",
+      image: "/casestudy-1.webp",
     },
     reversed: false,
   },
@@ -67,6 +68,7 @@ const caseStudies: { data: CaseStudyData; reversed: boolean }[] = [
       ],
       insight:
         "Scaling new capabilities requires not just technical execution, but disciplined risk management, visibility, and control.",
+      image: "/casestudy-2.webp",
     },
     reversed: true,
   },
@@ -98,6 +100,7 @@ const caseStudies: { data: CaseStudyData; reversed: boolean }[] = [
       ],
       insight:
         "Execution at scale is defined by how effectively teams adapt when real-world demand exceeds expectations.",
+      image: "/casestudy-3.webp",
     },
     reversed: false,
   },

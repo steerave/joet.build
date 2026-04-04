@@ -1,3 +1,4 @@
+import Image from "next/image";
 import ScrollReveal from "@/components/ScrollReveal";
 
 export interface CaseStudyData {
@@ -7,6 +8,7 @@ export interface CaseStudyData {
   whatIDid: string[];
   impact: string[];
   insight: string;
+  image?: string;
 }
 
 interface CaseStudyProps {
@@ -31,7 +33,7 @@ export default function CaseStudy({ data, reversed = false }: CaseStudyProps) {
             ? "lg:grid-cols-[1fr_1.3fr]"
             : "lg:grid-cols-[1.3fr_1fr]"
         }`}>
-          {reversed && <ImagePlaceholder animation="scale-up" />}
+          {reversed && <CaseStudyImage src={data.image} />}
 
           <div>
             <ScrollReveal animation={textAnim}>
@@ -98,20 +100,32 @@ export default function CaseStudy({ data, reversed = false }: CaseStudyProps) {
             </ScrollReveal>
           </div>
 
-          {!reversed && <ImagePlaceholder animation="scale-up" />}
+          {!reversed && <CaseStudyImage src={data.image} />}
         </div>
       </div>
     </section>
   );
 }
 
-function ImagePlaceholder({ animation }: { animation: "scale-up" }) {
+function CaseStudyImage({ src }: { src?: string }) {
   return (
-    <ScrollReveal animation={animation} delay={100}>
-      <div className="flex min-h-[320px] items-center justify-center rounded-lg border border-border bg-[linear-gradient(135deg,#0f1520_0%,#1a2a3a_40%,#0f1520_100%)] shadow-[0_8px_40px_rgba(0,0,0,0.3),0_0_40px_rgba(74,111,165,0.04)] lg:sticky lg:top-[100px]">
-        <span className="font-mono text-xs uppercase tracking-[2px] text-accent-light/50">
-          Case Study Image
-        </span>
+    <ScrollReveal animation="scale-up" delay={100}>
+      <div className="relative min-h-[320px] overflow-hidden rounded-lg border border-border shadow-[0_8px_40px_rgba(0,0,0,0.3),0_0_40px_rgba(74,111,165,0.04)] lg:sticky lg:top-[100px]">
+        {src ? (
+          <Image
+            src={src}
+            alt=""
+            width={800}
+            height={800}
+            className="h-full w-full object-cover"
+          />
+        ) : (
+          <div className="flex min-h-[320px] items-center justify-center bg-[linear-gradient(135deg,#0f1520_0%,#1a2a3a_40%,#0f1520_100%)]">
+            <span className="font-mono text-xs uppercase tracking-[2px] text-accent-light/50">
+              Case Study Image
+            </span>
+          </div>
+        )}
       </div>
     </ScrollReveal>
   );
