@@ -2,6 +2,8 @@
 
 <img width="1541" height="1145" alt="{C3CB2EDF-6ED2-4D50-AAC1-4D97E8541EBA}" src="https://github.com/user-attachments/assets/06339fec-eca6-46a4-bf18-adb569945b90" />
 
+**Live site: [joet.build](https://www.joet.build)**
+
 Personal portfolio website showcasing digital leadership experience and AI projects.
 
 ## Tech Stack
@@ -38,10 +40,6 @@ app/            → Root layout, page, global styles
 components/     → Modular section components
 public/         → Static assets
 ```
-
-## Live Site
-
-[https://www.joet.build](https://www.joet.build)
 
 ## Deployment
 
