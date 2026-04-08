@@ -37,6 +37,10 @@ components/     → Modular section components
 public/         → Static assets
 ```
 
+## Live Site
+
+[https://www.joet.build](https://www.joet.build)
+
 ## Deployment
 
 Deployed automatically via Vercel on push to `main`.
