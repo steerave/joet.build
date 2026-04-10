@@ -28,6 +28,9 @@ Thumbs.db
 .claude/settings.local.json
 .superpowers/
 
+# Dev reference files (component inspiration, not part of the site)
+components/comp_*.md
+
 # Coverage
 coverage/
 CLAUDE.md
