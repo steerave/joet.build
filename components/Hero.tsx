@@ -78,7 +78,7 @@ export default function Hero() {
             color: "#ffffff",
           }}
         >
-          SARUN
+          SARUN (JOE)
           <br />
           <span style={{ color: "#5b8fd4" }}>TEERAVECHYAN</span>
         </h1>
