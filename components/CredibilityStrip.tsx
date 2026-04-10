@@ -16,7 +16,13 @@ function useCountUp(target: number, active: boolean) {
     if (!active || hasRun.current) return;
     hasRun.current = true;
 
-    const duration = 1400;
+    // Respect prefers-reduced-motion — jump straight to final value
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setCurrent(target);
+      return;
+    }
+
+    const duration = 1600;
     const start = performance.now();
 
     function tick(now: number) {
@@ -37,21 +43,25 @@ export default function CredibilityStrip() {
   const ref = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(false);
 
+  // Scroll listener + immediate mount check — more reliable than IntersectionObserver
+  // at the hero/strip boundary across all screen sizes.
   useEffect(() => {
+    if (active) return;
+
     const el = ref.current;
     if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setActive(true);
-          observer.unobserve(el);
-        }
-      },
-      { threshold: 0.4 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+
+    function check() {
+      const rect = el!.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.92) {
+        setActive(true);
+      }
+    }
+
+    check(); // Fire on mount in case element is already visible
+    window.addEventListener("scroll", check, { passive: true });
+    return () => window.removeEventListener("scroll", check);
+  }, [active]);
 
   return (
     <section aria-label="Key achievements" className="border-y border-border">
@@ -82,10 +92,12 @@ function StatNumber({
   active: boolean;
 }) {
   const count = useCountUp(stat.numeric, active);
+  const fullLabel = `${stat.numeric}${stat.suffix} ${stat.line1} ${stat.line2}`;
 
   return (
-    <div className="flex flex-col items-center gap-3">
-      <div className="flex items-baseline">
+    <div className="flex flex-col items-center gap-3" aria-label={fullLabel}>
+      {/* Animated display — hidden from screen readers, aria-label on wrapper covers it */}
+      <div className="flex items-baseline" aria-hidden="true">
         <span
           className="font-mono font-medium leading-none text-accent"
           style={{ fontSize: "clamp(40px, 5vw, 52px)" }}
@@ -99,7 +111,7 @@ function StatNumber({
           {stat.suffix}
         </span>
       </div>
-      <div className="flex flex-col items-center gap-[2px]">
+      <div className="flex flex-col items-center gap-[2px]" aria-hidden="true">
         <span
           className="font-sans uppercase text-text-muted"
           style={{ fontSize: "11px", letterSpacing: "2px", fontWeight: 300 }}

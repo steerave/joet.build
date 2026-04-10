@@ -42,7 +42,7 @@ export default function CTA() {
           height: "420px",
           borderRadius: "50%",
           background:
-            "radial-gradient(ellipse, rgba(255,159,47,0.14) 0%, transparent 60%)",
+            "radial-gradient(ellipse, rgba(91,143,212,0.14) 0%, transparent 60%)",
           filter: "blur(60px)",
         }}
       />
@@ -55,7 +55,7 @@ export default function CTA() {
           height: "260px",
           borderRadius: "50%",
           background:
-            "radial-gradient(ellipse, rgba(255,159,47,0.07) 0%, transparent 60%)",
+            "radial-gradient(ellipse, rgba(91,143,212,0.07) 0%, transparent 60%)",
           filter: "blur(50px)",
         }}
       />
@@ -102,7 +102,7 @@ export default function CTA() {
               href="https://www.linkedin.com/in/sarun-teeravechyan/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block rounded-sm bg-accent font-sans font-bold text-black transition-opacity hover:opacity-90 active:scale-[0.98]"
+              className="inline-block rounded-sm bg-accent font-sans font-bold text-white transition-opacity hover:opacity-90 active:scale-[0.98]"
               style={{
                 fontSize: "11px",
                 letterSpacing: "1.5px",

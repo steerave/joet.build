@@ -3,7 +3,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 const projects = [
   {
     index: "01",
-    title: "AI Job Search Pipeline",
+    title: "AI Automated Search Pipeline",
     repo: "automated-search-pipeline",
     description:
       "Automated data pipeline — web scraping, LLM-based scoring with feedback loops, Google Sheets integration, and scheduled email digests.",
@@ -60,7 +60,7 @@ export default function AIProjects() {
           <ScrollReveal key={project.title} delay={200 + i * 100}>
             <div
               className="group flex h-full flex-col rounded-sm border-l-[3px] bg-surface p-8 transition-colors duration-300 hover:bg-elevated"
-              style={{ borderLeftColor: "rgba(255,159,47,0.45)" }}
+              style={{ borderLeftColor: "rgba(91,143,212,0.45)" }}
             >
               <p
                 className="mb-4 font-mono text-text-muted"

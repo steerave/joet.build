@@ -169,7 +169,7 @@ export default function Home() {
           <ScrollReveal>
             <div
               className="rounded-r-sm border-l-[3px] border-accent p-8"
-              style={{ background: "rgba(255,159,47,0.05)" }}
+              style={{ background: "rgba(91,143,212,0.05)" }}
             >
               <p
                 className="mb-4 text-text-primary"

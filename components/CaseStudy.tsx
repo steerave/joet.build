@@ -1,3 +1,4 @@
+import Image from "next/image";
 import ScrollReveal from "@/components/ScrollReveal";
 
 export interface CaseStudyData {
@@ -40,7 +41,7 @@ export default function CaseStudy({ data, reversed = false }: CaseStudyProps) {
               : "lg:grid-cols-[1.3fr_1fr]"
           }`}
         >
-          {reversed && <CaseStudyPlaceholder />}
+          {reversed && <CaseStudyImage src={data.image} />}
 
           <div>
             <ScrollReveal animation={textAnim}>
@@ -130,7 +131,7 @@ export default function CaseStudy({ data, reversed = false }: CaseStudyProps) {
             <ScrollReveal animation="slide-left" delay={300}>
               <div
                 className="mb-7 rounded-r-sm border-l-[3px] border-accent p-6"
-                style={{ background: "rgba(255,159,47,0.05)" }}
+                style={{ background: "rgba(91,143,212,0.05)" }}
               >
                 <h4
                   className="mb-4 font-mono text-accent"
@@ -167,7 +168,7 @@ export default function CaseStudy({ data, reversed = false }: CaseStudyProps) {
                   fontWeight: 300,
                   fontSize: "15px",
                   lineHeight: 1.75,
-                  borderLeftColor: "rgba(255,159,47,0.5)",
+                  borderLeftColor: "rgba(91,143,212,0.5)",
                 }}
               >
                 {data.insight}
@@ -184,26 +185,38 @@ export default function CaseStudy({ data, reversed = false }: CaseStudyProps) {
             </ScrollReveal>
           </div>
 
-          {!reversed && <CaseStudyPlaceholder />}
+          {!reversed && <CaseStudyImage src={data.image} />}
         </div>
       </div>
     </section>
   );
 }
 
-function CaseStudyPlaceholder() {
+function CaseStudyImage({ src }: { src?: string }) {
   return (
     <ScrollReveal animation="scale-up" delay={100}>
-      <div
-        className="flex min-h-[300px] items-center justify-center rounded-sm border border-border lg:sticky lg:top-[100px]"
-        style={{ background: "rgba(255,159,47,0.025)" }}
-      >
-        <span
-          className="font-mono text-text-muted"
-          style={{ fontSize: "9px", letterSpacing: "3px" }}
-        >
-          CASE STUDY
-        </span>
+      <div className="relative min-h-[320px] overflow-hidden rounded-sm border border-border shadow-[0_8px_40px_rgba(0,0,0,0.3),0_0_40px_rgba(91,143,212,0.06)] lg:sticky lg:top-[100px]">
+        {src ? (
+          <Image
+            src={src}
+            alt=""
+            width={800}
+            height={800}
+            className="h-full w-full object-cover"
+          />
+        ) : (
+          <div
+            className="flex min-h-[320px] items-center justify-center"
+            style={{ background: "rgba(91,143,212,0.025)" }}
+          >
+            <span
+              className="font-mono text-text-muted"
+              style={{ fontSize: "9px", letterSpacing: "3px" }}
+            >
+              CASE STUDY
+            </span>
+          </div>
+        )}
       </div>
     </ScrollReveal>
   );

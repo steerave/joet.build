@@ -52,12 +52,12 @@ export default function WhatIDo() {
           <ScrollReveal key={card.title} delay={200 + i * 100}>
             <div
               className="group relative rounded-sm border-l-[3px] bg-surface p-8 transition-all duration-300 hover:bg-elevated"
-              style={{ borderLeftColor: "rgba(255,159,47,0.35)" }}
+              style={{ borderLeftColor: "rgba(91,143,212,0.35)" }}
             >
               {/* Subtle amber tint on hover */}
               <div
                 className="pointer-events-none absolute inset-0 rounded-sm opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                style={{ background: "rgba(255,159,47,0.03)" }}
+                style={{ background: "rgba(91,143,212,0.03)" }}
               />
               <p
                 className="relative mb-5 font-mono text-text-muted"

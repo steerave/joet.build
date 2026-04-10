@@ -1,21 +1,14 @@
 "use client";
 
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 
 export default function Hero() {
-  // Track mouse position and write to CSS custom properties.
-  // The .hero-grid-spotlight layer uses these to position its radial mask.
+  const [mousePos, setMousePos] = useState({ x: -9999, y: -9999 });
+
   const handleMouseMove = useCallback(
     (e: React.MouseEvent<HTMLElement>) => {
       const rect = e.currentTarget.getBoundingClientRect();
-      e.currentTarget.style.setProperty(
-        "--mouse-x",
-        `${e.clientX - rect.left}px`
-      );
-      e.currentTarget.style.setProperty(
-        "--mouse-y",
-        `${e.clientY - rect.top}px`
-      );
+      setMousePos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
     },
     []
   );
@@ -36,7 +29,13 @@ export default function Hero() {
       {/* ── Grid layer 2: spotlight — brighter, reveals at cursor ─────────── */}
       <div
         aria-hidden="true"
-        className="hero-grid-spotlight pointer-events-none absolute inset-0"
+        className="hero-grid-base pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(91,143,212,0.18) 1px, transparent 1px), linear-gradient(90deg, rgba(91,143,212,0.18) 1px, transparent 1px)",
+          maskImage: `radial-gradient(350px circle at ${mousePos.x}px ${mousePos.y}px, black, transparent)`,
+          WebkitMaskImage: `radial-gradient(350px circle at ${mousePos.x}px ${mousePos.y}px, black, transparent)`,
+        }}
       />
 
       {/* ── Ambient glow — top-right corner, single amber bloom ───────────── */}
@@ -49,28 +48,9 @@ export default function Hero() {
           width: "560px",
           height: "560px",
           background:
-            "radial-gradient(circle, rgba(255,159,47,0.09) 0%, transparent 65%)",
+            "radial-gradient(circle, rgba(91,143,212,0.09) 0%, transparent 65%)",
         }}
       />
-
-      {/* ── Ghost surname — bottom-anchored, behind all content ───────────── */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute select-none whitespace-nowrap"
-        style={{
-          bottom: "-8px",
-          left: "-6px",
-          fontFamily: "var(--font-anybody)",
-          fontWeight: 900,
-          fontSize: "clamp(72px, 13vw, 136px)",
-          color: "rgba(255,255,255,0.022)",
-          lineHeight: 1,
-          letterSpacing: "-4px",
-          textTransform: "uppercase",
-        }}
-      >
-        TEERAVECHYAN
-      </div>
 
       {/* ── Hero content ─────────────────────────────────────────────────── */}
       <div className="relative z-10 mx-auto w-full max-w-content px-6 py-[120px] md:px-10 lg:px-20">
@@ -80,11 +60,11 @@ export default function Hero() {
           className="hero-animate-1 mb-7 flex items-center gap-[6px] font-mono"
           style={{ fontSize: "10px", letterSpacing: "2px" }}
         >
-          <span style={{ color: "#ff9f2f" }}>~/</span>
+          <span style={{ color: "#5b8fd4" }}>~/</span>
           <span style={{ color: "#2e2e2e" }}>portfolio</span>
           <span style={{ color: "#1e1e1e" }}>·</span>
-          <span style={{ color: "#243824" }}>main</span>
-          <span style={{ color: "#ff9f2f" }}>›</span>
+          <span style={{ color: "#1a2a3a" }}>main</span>
+          <span style={{ color: "#5b8fd4" }}>›</span>
         </div>
 
         {/* Name */}
@@ -100,7 +80,7 @@ export default function Hero() {
         >
           SARUN
           <br />
-          <span style={{ color: "#ff9f2f" }}>TEERAVECHYAN</span>
+          <span style={{ color: "#5b8fd4" }}>TEERAVECHYAN</span>
         </h1>
 
         {/* Tagline */}
@@ -110,7 +90,7 @@ export default function Hero() {
             fontFamily: "var(--font-anybody)",
             fontWeight: 300,
             fontSize: "16px",
-            color: "#5a5a5a",
+            color: "#888888",
             lineHeight: 1.75,
             maxWidth: "460px",
           }}
@@ -132,10 +112,10 @@ export default function Hero() {
               letterSpacing: "1.5px",
               textTransform: "uppercase",
               padding: "13px 26px",
-              background: "#ff9f2f",
-              color: "#000",
+              background: "#5b8fd4",
+              color: "#ffffff",
               textDecoration: "none",
-              boxShadow: "0 0 0 0 rgba(255,159,47,0.4)",
+              boxShadow: "0 0 0 0 rgba(91,143,212,0.4)",
             }}
           >
             View Work
@@ -162,7 +142,7 @@ export default function Hero() {
         {/* Disclaimer */}
         <p
           className="hero-animate-4 mt-6 font-mono"
-          style={{ fontSize: "10px", color: "#2a2a2a", letterSpacing: "1.5px" }}
+          style={{ fontSize: "10px", color: "#666666", letterSpacing: "1.5px" }}
         >
           DE-IDENTIFIED WORK · DETAILS AVAILABLE UPON REQUEST
         </p>
