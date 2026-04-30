@@ -43,10 +43,11 @@ export default function About() {
                 className="text-text-body"
                 style={{ fontSize: "17px", lineHeight: 1.7 }}
               >
-                I&apos;m now focused on applying AI to transform how digital
-                systems are designed and executed, combining structured delivery
-                with emerging technologies to unlock new levels of efficiency
-                and impact.
+                I&apos;m now focused on the organizational side of AI: how
+                systems should fit existing workflows, and how teams adapt as
+                adoption lands. The personal projects below keep me close to
+                how the tools actually work; the work I want to lead next is
+                the organizational change around them.
               </p>
             </ScrollReveal>
           </div>

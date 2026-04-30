@@ -23,7 +23,8 @@ export default function CTA() {
               style={{ fontSize: "17px", lineHeight: 1.6 }}
             >
               Open to senior roles and conversations around digital leadership,
-              AI-driven execution, and product operations.
+              large-program execution, and how AI lands inside organizational
+              delivery.
             </p>
           </ScrollReveal>
           <ScrollReveal delay={200}>

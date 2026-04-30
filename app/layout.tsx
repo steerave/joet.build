@@ -17,13 +17,13 @@ const interTight = Inter_Tight({
 });
 
 export const metadata: Metadata = {
-  title: "Sarun (Joe) Teeravechyan - Digital Leader & AI Systems Builder",
+  title: "Sarun (Joe) Teeravechyan — Senior Digital Delivery Leader",
   description:
-    "Senior digital leader delivering complex programs at scale. Building AI systems to transform how digital systems are designed and executed.",
+    "Senior digital leader delivering complex national programs across North America. Now focused on how AI lands inside organizational delivery: where it fits, how systems are designed around existing workflows, how teams adapt.",
   openGraph: {
-    title: "Sarun (Joe) Teeravechyan - Digital Leader & AI Systems Builder",
+    title: "Sarun (Joe) Teeravechyan — Senior Digital Delivery Leader",
     description:
-      "Senior digital leader delivering complex programs at scale. Building AI systems to transform how digital systems are designed and executed.",
+      "Senior digital leader delivering complex national programs across North America. Now focused on how AI lands inside organizational delivery: where it fits, how systems are designed around existing workflows, how teams adapt.",
     type: "website",
   },
 };

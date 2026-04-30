@@ -32,7 +32,7 @@ export default function AIProjects() {
       className="mx-auto max-w-content px-6 py-24 md:px-10 lg:px-16 lg:py-32"
     >
       <ScrollReveal>
-        <div className="mb-12 flex items-baseline justify-between">
+        <div className="mb-4 flex items-baseline justify-between">
           <h2
             className="font-display font-semibold tracking-[-0.02em] text-text-primary"
             style={{ fontSize: "clamp(24px, 2.8vw, 30px)" }}
@@ -43,6 +43,15 @@ export default function AIProjects() {
             Open source · github.com/steerave
           </span>
         </div>
+      </ScrollReveal>
+      <ScrollReveal delay={50}>
+        <p
+          className="mb-12 max-w-prose text-text-body"
+          style={{ fontSize: "15px", lineHeight: 1.6 }}
+        >
+          I build personal AI projects to stay grounded in the tools — the work
+          I want to lead is the organizational side.
+        </p>
       </ScrollReveal>
 
       <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">

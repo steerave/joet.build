@@ -20,17 +20,17 @@ export default function Hero() {
           style={{ fontSize: "clamp(40px, 6vw, 72px)" }}
         >
           I lead complex digital programs at{" "}
-          <span className="text-accent">national scale</span>,
-          <br className="hidden md:block" /> and apply AI to make them faster.
+          <span className="text-accent">national scale</span>.
         </h1>
 
         <p
-          className="hero-animate-3 mt-7 max-w-[600px] text-text-body"
+          className="hero-animate-3 mt-7 max-w-[640px] text-text-body"
           style={{ fontSize: "19px", lineHeight: 1.5 }}
         >
           Twenty years delivering high-visibility programs across North America.
-          Now focused on applying AI to transform how systems are designed,
-          operated, and scaled.
+          Now studying how AI reshapes organizational delivery: where it fits,
+          how systems are designed around existing workflows, and how teams
+          adapt as adoption lands.
         </p>
 
         <div className="hero-animate-4 mt-10 flex flex-wrap items-center gap-3">
