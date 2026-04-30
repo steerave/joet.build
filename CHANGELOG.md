@@ -9,6 +9,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com).
 
 ### Changed
 - Hero, About, AI Projects, CTA, and page metadata copy rewritten to remove AI overclaim. AI is now framed honestly as a study/adoption interest (organizational application, system fit, change management) rather than applied professional experience. New AI Projects subtitle: "I build personal AI projects to stay grounded in the tools — the work I want to lead is the organizational side." Hero headline reduced to a single confident sentence: "I lead complex digital programs at national scale." Page title now "Sarun (Joe) Teeravechyan — Senior Digital Delivery Leader."
+- Refreshed favicon to v3 palette: `#0b0e14` → `#0B0B0F` background, `#4A6FA5` → `#5B8FD4` accent letters, tighter letter-spacing.
+
+### Fixed
+- Favicon was never being served at any URL — `app/favicon.svg` doesn't match Next.js App Router auto-detection conventions. Renamed to `app/icon.svg`, which Next.js now auto-injects as `<link rel="icon">` in the document head. Hard-refresh required to clear browser favicon cache.
+- Case study detail page hero image was `loading="lazy"` despite being the LCP element. Added `priority` and `sizes` props to `CaseStudyDetail` `Image` to preload above-the-fold image and avoid unnecessary 2x retina download.
+- Touch target sizes: added `min-h-[44px]` to all primary CTAs (Hero "View Selected Work", "Download CV"; CTA section "LinkedIn", "Email", "Download CV") to satisfy WCAG 2.2 AAA (44×44 minimum). Nav "Curriculum Vitae" button bumped to `min-h-[40px]` (still above WCAG AA 24×24 minimum, kept compact for nav proportion).
+
+### Added
+- New design token `--color-on-accent: #0B1220` for text on filled accent buttons. Replaces two stray hex literals (`text-[#0B1220]`) in `Hero.tsx` and `CTA.tsx` that bypassed the token system in v3.0.
 
 ---
 

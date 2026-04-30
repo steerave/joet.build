@@ -31,7 +31,7 @@ export default function Nav() {
             href="/Joe_Teeravechyan_Resume.pdf"
             target="_blank"
             rel="noopener"
-            className="rounded-md border border-border px-[14px] py-[7px] text-[13px] font-medium text-text-primary transition-colors duration-150 hover:border-accent hover:text-accent"
+            className="inline-flex min-h-[40px] items-center rounded-md border border-border px-[14px] py-[8px] text-[13px] font-medium text-text-primary transition-colors duration-150 hover:border-accent hover:text-accent"
           >
             Curriculum Vitae
           </a>

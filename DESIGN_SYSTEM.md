@@ -25,6 +25,7 @@ All tokens defined in `app/globals.css` under `@theme`. All text colors verified
 | Text Muted | `--color-text-muted` | `#80808B` | Labels, secondary metadata (~5:1 contrast) |
 | Accent | `--color-accent` | `#5B8FD4` | Buttons, hover state, headline highlight span |
 | Accent Light | `--color-accent-light` | `#7AAEE0` | Hover states |
+| On Accent | `--color-on-accent` | `#0B1220` | Text on filled accent buttons (slightly bluer than bg for cohesion) |
 | Success | `--color-success` | `#4ED68A` | Availability pill dot only |
 
 **Rule:** never use `#000` or `#fff`. Every neutral is tinted toward a cool blue/grey hue. No additional colors without explicit approval.

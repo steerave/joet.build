@@ -33,13 +33,13 @@ export default function CTA() {
                 href="https://www.linkedin.com/in/sarun-teeravechyan/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-md bg-accent px-[22px] py-[12px] font-display text-[14px] font-medium text-[#0B1220] transition-colors duration-150 hover:bg-accent-light active:scale-[0.98]"
+                className="inline-flex min-h-[44px] items-center gap-2 rounded-md bg-accent px-[22px] py-[12px] font-display text-[14px] font-medium text-on-accent transition-colors duration-150 hover:bg-accent-light active:scale-[0.98]"
               >
                 LinkedIn
               </a>
               <a
                 href="mailto:steerave@gmail.com"
-                className="inline-flex items-center gap-2 rounded-md border border-border px-[22px] py-[12px] font-display text-[14px] font-medium text-text-primary transition-colors duration-150 hover:border-text-body active:scale-[0.98]"
+                className="inline-flex min-h-[44px] items-center gap-2 rounded-md border border-border px-[22px] py-[12px] font-display text-[14px] font-medium text-text-primary transition-colors duration-150 hover:border-text-body active:scale-[0.98]"
               >
                 Email
               </a>
@@ -47,7 +47,7 @@ export default function CTA() {
                 href="/Joe_Teeravechyan_Resume.pdf"
                 target="_blank"
                 rel="noopener"
-                className="inline-flex items-center gap-2 rounded-md border border-border px-[22px] py-[12px] font-display text-[14px] font-medium text-text-primary transition-colors duration-150 hover:border-text-body active:scale-[0.98]"
+                className="inline-flex min-h-[44px] items-center gap-2 rounded-md border border-border px-[22px] py-[12px] font-display text-[14px] font-medium text-text-primary transition-colors duration-150 hover:border-text-body active:scale-[0.98]"
               >
                 Download CV
               </a>

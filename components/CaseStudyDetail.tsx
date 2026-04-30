@@ -39,6 +39,8 @@ export default function CaseStudyDetail({ data }: { data: CaseStudy }) {
             alt=""
             width={1600}
             height={900}
+            priority
+            sizes="(min-width: 1080px) 1080px, 100vw"
             className="h-auto w-full object-cover"
           />
         </div>
