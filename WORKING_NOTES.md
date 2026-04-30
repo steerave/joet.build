@@ -1,31 +1,43 @@
 # WORKING_NOTES.md — Sarun (Joe) Teeravechyan Portfolio Site
 
 ## Current Status
-> **v2.0 deployed to production (2026-04-10)**
-> Live at [joet.build](https://www.joet.build) — main branch, tagged `v2.0`.
+> **v3.0 built locally (2026-04-30)** — pending deploy and PDF upload.
+> Previous: v2.0 deployed at [joet.build](https://www.joet.build), tagged `v2.0`.
 
 ---
 
 ## What's Been Done
 
 ### v1.0 (2026-04-04)
-- Defined full site structure and section order
-- Finalized all copy in `personal_website_copy.md`
-- Created design system in `DESIGN_SYSTEM.md`
-- Built all 9 sections with scroll animations, count-up, alternating case study layouts
-- Deployed to Vercel at joet.build
-- Tagged `v1.0` on main
+- Full site structure, copy, design system
+- 9 sections, scroll animations, count-up, alternating case studies
+- Deployed to Vercel; tagged `v1.0`
 
 ### v2.0 (2026-04-10)
-- Full visual redesign: Dark Craft / Executive Blue aesthetic
-- New fonts: Anybody (display + body) + DM Mono (labels/code)
-- Infinite grid hero with mouse spotlight (pure CSS + React, no new dependencies)
-- Accent color: amber → steel blue `#5b8fd4`
-- Case study images restored (casestudy-1/2/3.webp) with `next/image`
-- Third AI project added: Rental Tax Pipeline
-- Count-up animation fixed — scroll listener replaces unreliable IntersectionObserver
-- WCAG improvements: contrast, focus rings, aria labels, skip link
-- Tagged `v2.0` on main, pushed to GitHub
+- Visual redesign: Dark Craft / Executive Blue, Anybody + DM Mono, infinite grid hero
+- Mouse-tracking spotlight, restored case study images, third AI project
+- Tagged `v2.0`, deployed
+
+### v3.0 (2026-04-30) — Quiet Executive redesign
+Triggered by `$impeccable critique` finding multiple anti-pattern violations and WCAG AA failures despite explicit compliance claim.
+
+- **Critique findings addressed:**
+  - 5x `border-l-[3px]` side-stripe borders → all removed
+  - Two near-identical card grids → cut WhatIDo entirely
+  - Em dashes in copy → reduced (a few preserved in case study insight quotes)
+  - WCAG failures (`#444`, `#2e2e2e`, `#1e1e1e`, `#666`, `#ffffff`) → token-driven palette, all ≥4.5:1
+  - Terminal-style cosplay (`~/portfolio · main ›`, `SJT` monogram, mono labels) → removed
+  - Numbered card indices (01/02/03) → removed
+  - Mouse-tracking grid hero → replaced with quiet static hero
+- **New shape:**
+  - Inter Tight (display) + Inter (body); Anybody and DM Mono dropped
+  - Selected Work on home is a list; each case study at `/work/[slug]`
+  - "Download CV" button in nav, hero, and CTA (links to `/Joe_Teeravechyan_Resume.pdf`)
+  - Availability pill with green dot in hero
+  - Real footer links (LinkedIn, GitHub, Email)
+- **Files added:** `lib/case-studies.ts`, `components/CaseStudyListItem.tsx`, `components/CaseStudyDetail.tsx`, `app/work/[slug]/page.tsx`, `mockups/01-editorial.html`, `mockups/02-boardroom.html`, `mockups/03-quiet-executive.html`, `mockups/index.html`
+- **Files removed:** `components/WhatIDo.tsx`, `components/CaseStudy.tsx`
+- Build passes (`npx next build`); 4 routes statically generated
 
 ---
 
@@ -33,50 +45,63 @@
 
 | Decision | Rationale |
 |---|---|
-| Cut "How I Think" section | Copy felt generic. Case studies carry narrative weight |
-| No dollar figures in credibility strip | Couldn't verify. Replaced with "Millions / Users impacted" |
-| Credibility stats: 20+ years, 30+ programs, 10M+ users | Accurate and defensible |
-| v2 accent: steel blue `#5b8fd4` (not amber) | Blue reads as executive/institutional; amber reads as technical/builder |
-| v2 fonts: Anybody + DM Mono | Distinctive wide display type vs. generic Inter/Geist |
-| Infinite grid hero | Technical credibility signal — interactive, premium feel |
-| Ghost watermark removed | Too heavy, interfered with clean composition |
-| Count-up uses scroll listener, not IntersectionObserver | More reliable at hero/strip boundary on all screen sizes and browsers |
-| `text-muted` bumped to `#777777` | `#444444` only passed 2.25:1 contrast — fails WCAG AA |
-| Case study images restored | Midjourney artwork adds premium visual weight; `alt=""` (decorative) per WCAG |
-| No framer-motion dependency | Grid + spotlight implemented with pure CSS + React state |
-| Dev reference files gitignored (`components/comp_*.md`) | Not part of the site; kept local for reference only |
+| v3 register: quiet executive (mockup C) | Closest to current dark palette; killed dev cosplay; smallest distance with biggest credibility lift |
+| Font system: Inter Tight + Inter (strict, no Anybody) | User chose option 2A; prioritizes seriousness over distinctive signature |
+| Case study layout: list + detail pages (not inline) | User chose option 1B; faster skim, more polished, supports per-study SEO |
+| Cut WhatIDo entirely | Platitude cards repeat hero + About content; added no signal |
+| Cut narrative summary block + "How This Site Was Built" | Restated themes case studies already prove |
+| Background `#0B0B0F` (not pure `#080808`) | Per impeccable rule: tint every neutral toward brand hue; never use `#000`/`#fff` |
+| `text-primary` `#ECECF0` (not `#ffffff`) | Same rule — no pure white |
+| CV button links to `/Joe_Teeravechyan_Resume.pdf` | Filename matches the file the user wants downloaded; button labels stay "Curriculum Vitae" / "Download CV" for executive register |
+| Static stats (no count-up) | Animation read as SaaS-y and shaved no perceived value |
+| Removed all hardcoded hex literals from components | Now flow exclusively from `@theme` tokens |
+| Cut nav `Connect` link | Footer now has the real connect links; nav is Work / AI / About / CV |
+| Cut DM Mono entirely | Mono read as terminal/dev cosplay, wrong audience signal |
+
+| Cut from v2 | Why |
+|---|---|
+| Mouse-tracking spotlight grid | "AI portfolio" template tell |
+| Section-glow gradient dividers | Decorative, low signal |
+| Count-up scroll-triggered animation | Reads SaaS-y, no real value |
+| `border-l-[3px]` side stripes (5x) | Impeccable absolute ban |
+| Hero terminal breadcrumb | Dev cosplay; wrong audience |
+| `01 / 02 / 03` card indices | Template fingerprint |
+| Mono section eyebrows | Terminal aesthetic |
+| Hero ambient glow | Decorative |
+| CTA radial intersection glow | Decorative |
 
 ---
 
-## Open Questions
-- [ ] Custom domain renewal — ensure joet.build auto-renews
-- [ ] OG image — current one reflects v1 design; consider updating to v2 screenshot
+## Open Questions / TODO
+
+- [ ] OG image — current one reflects v1 design; update to v3 hero screenshot after first prod render.
+- [ ] Decide whether AI Projects deserves longer-form pages too (mirror `/work/[slug]` pattern at `/projects/[slug]`).
+- [ ] Reference image at `assets/personal_website_playbook.md` line items not yet validated against v3.
+- [ ] Smoke-test all routes on real mobile device.
+- [x] ~~Upload resume PDF~~ — `Joe_Teeravechyan_Resume.pdf` in `public/` (2026-04-30).
+- [x] ~~Headshot~~ — declined; no good photo available, leaving site faceless for now.
 
 ---
 
-## Next Steps (Post v2.0)
-- Update OG image to reflect v2 design
-- Monitor for any responsive issues on real devices
-- Consider adding a 4th AI project card when next project is ready
-- Consider adding a resume download link
+## Next Steps (Post v3.0 build)
+
+1. Visual smoke test on phone + desktop (real browsers).
+2. Tag `v3.0`, push to GitHub, confirm Vercel auto-deploy completes.
+3. Update OG image after first prod render.
+4. Re-run `$impeccable critique` to confirm score lift.
 
 ---
 
 ## Session Log
 
 ### Session 1 — Project Setup
-- Defined structure, copy, design decisions
-- Created CLAUDE.md, DESIGN_SYSTEM.md, WORKING_NOTES.md
+Defined structure, copy, design decisions; created CLAUDE.md, DESIGN_SYSTEM.md, WORKING_NOTES.md.
 
 ### Session 2 — v1.0 Build (2026-04-03/04)
-- Built all 9 sections
-- Deployed to Vercel, tagged v1.0
+Built all 9 sections; deployed; tagged `v1.0`.
 
 ### Session 3 — v2.0 Redesign (2026-04-10)
-- Brainstormed v2 direction with visual companion
-- Approved design: Dark Craft / Amber (later switched to Executive Blue)
-- Wrote design spec: `docs/superpowers/specs/2026-04-10-v2-redesign-design.md`
-- Wrote implementation plan: `docs/superpowers/plans/2026-04-10-v2-redesign.md`
-- Implemented all 11 components + layout + globals
-- Polish pass: color swap amber→blue, case study images, WCAG, animation fixes
-- Deployed v2.0 to production, tagged v2.0
+Brainstormed v2 direction; wrote spec + plan in `docs/superpowers/`; implemented Dark Craft / Executive Blue; deployed; tagged `v2.0`.
+
+### Session 4 — v3.0 Redesign (2026-04-30)
+Ran `$impeccable critique` against v2; surfaced multiple AI-portfolio anti-patterns and WCAG failures. Built three tonal probes (`mockups/01-editorial.html`, `02-boardroom.html`, `03-quiet-executive.html`); user picked C (quiet executive) and 2A (Inter Tight + Inter). Refactored case studies to list + detail pattern; recolored entire palette per contrast and "no pure black/white" rule; removed all dev-cosplay elements; build passes.

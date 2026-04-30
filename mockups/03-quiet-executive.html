@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tonal probe — Quiet executive / Linear-style</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0B0B0F;
+    --bg-elev: #14141A;
+    --rule: #1F1F27;
+    --text: #E8E8EE;
+    --text-soft: #A1A1AC;
+    --text-muted: #6E6E78;
+    --accent: #6E8FCC;
+    --accent-soft: rgba(110, 143, 204, 0.14);
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text-soft);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(11, 11, 15, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--rule);
+    padding: 18px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav .brand {
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+  .nav .links {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+  }
+  .nav a {
+    color: var(--text-soft);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 120ms ease;
+  }
+  .nav a:hover { color: var(--text); }
+  .nav .cv {
+    color: var(--text);
+    border: 1px solid var(--rule);
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .nav .cv:hover { border-color: var(--accent); color: var(--accent); }
+
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 40px; }
+
+  .hero { padding: 140px 0 96px; }
+  .availability {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-soft);
+    border: 1px solid var(--rule);
+    padding: 6px 12px;
+    border-radius: 999px;
+    margin-bottom: 28px;
+  }
+  .availability::before {
+    content: '';
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: #4ED68A;
+    box-shadow: 0 0 0 3px rgba(78, 214, 138, 0.15);
+  }
+  h1 {
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 600;
+    font-size: clamp(40px, 6vw, 72px);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    color: var(--text);
+    margin: 0 0 28px;
+    max-width: 880px;
+  }
+  h1 .accent { color: var(--accent); }
+  .tagline {
+    font-size: 19px;
+    line-height: 1.5;
+    color: var(--text-soft);
+    max-width: 580px;
+    margin: 0 0 40px;
+  }
+  .hero-cta {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    text-decoration: none;
+    transition: all 150ms ease;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #0B1220;
+  }
+  .btn-primary:hover { background: #87a5dd; }
+  .btn-ghost {
+    color: var(--text);
+    border: 1px solid var(--rule);
+  }
+  .btn-ghost:hover { border-color: var(--text-soft); }
+
+  .stats {
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 56px 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 56px;
+  }
+  .stat { }
+  .stat .num {
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 600;
+    font-size: 56px;
+    line-height: 1;
+    color: var(--text);
+    letter-spacing: -0.03em;
+    margin-bottom: 12px;
+  }
+  .stat .label {
+    font-size: 14px;
+    color: var(--text-soft);
+    line-height: 1.45;
+    max-width: 240px;
+  }
+
+  section.work { padding: 120px 0 96px; }
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 40px;
+  }
+  .section-title {
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+    color: var(--text);
+    letter-spacing: -0.015em;
+    margin: 0;
+  }
+  .section-meta {
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  .case {
+    padding: 32px 0;
+    border-top: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 100px 1fr auto;
+    gap: 32px;
+    align-items: baseline;
+    transition: padding-left 200ms ease;
+    cursor: pointer;
+  }
+  .case:hover { padding-left: 12px; }
+  .case .year {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .case h3 {
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 500;
+    font-size: 19px;
+    line-height: 1.35;
+    color: var(--text);
+    margin: 0 0 8px;
+    letter-spacing: -0.015em;
+  }
+  .case p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-soft);
+    margin: 0;
+    max-width: 640px;
+  }
+  .case .arrow {
+    font-size: 16px;
+    color: var(--text-muted);
+    transition: color 150ms ease, transform 200ms ease;
+  }
+  .case:hover .arrow { color: var(--accent); transform: translateX(4px); }
+
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 40px 0;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    color: var(--text-muted);
+    font-size: 13px;
+  }
+  footer .links { display: flex; gap: 24px; }
+  footer a { color: var(--text-soft); text-decoration: none; }
+  footer a:hover { color: var(--text); }
+</style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="brand">Sarun Teeravechyan</div>
+    <div class="links">
+      <a href="#">Work</a>
+      <a href="#">AI</a>
+      <a href="#">About</a>
+      <a class="cv" href="#">Curriculum Vitae</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <section class="hero">
+      <div class="availability">Open to senior digital leadership roles</div>
+      <h1>
+        I lead complex digital programs at <span class="accent">national scale</span>,
+        and apply AI to make them faster.
+      </h1>
+      <p class="tagline">
+        Twenty years delivering high-visibility programs across North America.
+        Now focused on applying AI to transform how systems are designed,
+        operated, and scaled.
+      </p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#">View Selected Work</a>
+        <a class="btn btn-ghost" href="#">Download CV</a>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div class="stat">
+        <div class="num">20+</div>
+        <div class="label">Years leading digital execution</div>
+      </div>
+      <div class="stat">
+        <div class="num">30+</div>
+        <div class="label">National-scale programs delivered</div>
+      </div>
+      <div class="stat">
+        <div class="num">10M+</div>
+        <div class="label">Users supported in live systems</div>
+      </div>
+    </section>
+
+    <section class="work">
+      <div class="section-head">
+        <h2 class="section-title">Selected work</h2>
+        <span class="section-meta">De-identified &middot; details on request</span>
+      </div>
+
+      <a class="case" href="#">
+        <span class="year">2024</span>
+        <div>
+          <h3>National digital promotion at first-time ticketless scale</h3>
+          <p>For a global QSR brand: led the U.S. transition from physical to fully digital participation. Repeatable execution model adopted for future programs.</p>
+        </div>
+        <span class="arrow">&rarr;</span>
+      </a>
+
+      <a class="case" href="#">
+        <span class="year">2023</span>
+        <div>
+          <h3>Real-time digital prize fulfillment</h3>
+          <p>Replaced legacy check-based fulfillment with secure API-based payouts. Clean launch despite first-time implementation; no production sandbox available.</p>
+        </div>
+        <span class="arrow">&rarr;</span>
+      </a>
+
+      <a class="case" href="#">
+        <span class="year">2022</span>
+        <div>
+          <h3>Live program scaled under extreme demand</h3>
+          <p>Multi-fold over-forecast engagement absorbed in real time. Avoided code depletion and legal risk through live ingestion and fraud mitigation.</p>
+        </div>
+        <span class="arrow">&rarr;</span>
+      </a>
+    </section>
+  </div>
+
+  <div class="container">
+    <footer>
+      <div>&copy; 2026 Sarun Teeravechyan</div>
+      <div class="links">
+        <a href="#">LinkedIn</a>
+        <a href="#">Email</a>
+        <a href="#">GitHub</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

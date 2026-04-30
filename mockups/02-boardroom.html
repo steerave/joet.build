@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tonal probe — Boardroom / Consulting deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;500;700;800&family=Source+Serif+4:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FCFAF6;
+    --ink: #0C1F33;
+    --ink-soft: #2C3F54;
+    --ink-muted: #6B7787;
+    --rule: #D8DBE0;
+    --accent: #B7861C;
+    --tint: #F1ECE0;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Manrope', system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .frame {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 28px 56px 80px;
+  }
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 14px;
+    margin-bottom: 48px;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 600;
+  }
+  .topbar .name { color: var(--ink); font-weight: 800; letter-spacing: 0.04em; }
+  .topbar .nav span { margin-left: 32px; }
+  .topbar .nav span:hover { color: var(--accent); cursor: pointer; }
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 64px;
+    margin-bottom: 64px;
+  }
+  .doc-id {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+  }
+  h1 {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 800;
+    font-size: clamp(36px, 4.5vw, 54px);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin: 0 0 24px;
+  }
+  .lede {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 300;
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 680px;
+    margin: 0 0 32px;
+  }
+  .meta {
+    border-top: 1px solid var(--rule);
+    padding-top: 16px;
+    display: flex;
+    gap: 36px;
+    font-size: 12px;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .meta strong { color: var(--ink); display: block; font-size: 13px; letter-spacing: 0.05em; margin-top: 4px; }
+  .summary-card {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 32px 28px;
+    border-top: 4px solid var(--accent);
+  }
+  .summary-card .label {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 18px;
+  }
+  .summary-card h3 {
+    font-size: 17px;
+    font-weight: 700;
+    margin: 0 0 16px;
+    line-height: 1.35;
+  }
+  .summary-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+    font-family: 'Source Serif 4', serif;
+    font-size: 14px;
+    color: rgba(252, 250, 246, 0.8);
+  }
+  .summary-card ul li {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(252, 250, 246, 0.12);
+  }
+  .summary-card ul li:last-child { border-bottom: 0; }
+  .summary-card ul li strong { color: var(--paper); font-weight: 700; }
+  .summary-card .cta {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--ink);
+    padding: 12px 22px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  .summary-card .cta:hover { background: var(--paper); }
+
+  .exhibit {
+    margin: 0 0 56px;
+    border-top: 2px solid var(--ink);
+    padding-top: 28px;
+  }
+  .exhibit-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 28px;
+  }
+  .exhibit-num {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: var(--accent);
+  }
+  .exhibit-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--ink);
+    flex: 1;
+    margin-left: 32px;
+    letter-spacing: -0.01em;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .stat-cell {
+    padding: 28px 32px 28px 0;
+    border-right: 1px solid var(--rule);
+  }
+  .stat-cell:last-child { border-right: 0; }
+  .stat-cell .figure {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 800;
+    font-size: 64px;
+    line-height: 0.95;
+    color: var(--ink);
+    letter-spacing: -0.04em;
+    margin-bottom: 14px;
+  }
+  .stat-cell .figure sup {
+    font-size: 28px;
+    color: var(--accent);
+    margin-left: 4px;
+    font-weight: 700;
+  }
+  .stat-cell .desc {
+    font-family: 'Source Serif 4', serif;
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    max-width: 240px;
+  }
+  .bar {
+    height: 6px;
+    background: var(--tint);
+    margin: 18px 0 14px;
+    position: relative;
+  }
+  .bar::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: var(--w, 70%);
+    background: var(--accent);
+  }
+  .case-table {
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .case-row {
+    display: grid;
+    grid-template-columns: 60px 1fr 200px 120px;
+    gap: 32px;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: baseline;
+  }
+  .case-row:last-child { border-bottom: 0; }
+  .case-row .idx {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--ink-muted);
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .case-row .title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.35;
+  }
+  .case-row .title small {
+    display: block;
+    font-family: 'Source Serif 4', serif;
+    font-weight: 300;
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 6px;
+    letter-spacing: 0;
+  }
+  .case-row .impact {
+    font-family: 'Source Serif 4', serif;
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+  .case-row .scale {
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-align: right;
+  }
+
+  footer {
+    margin-top: 64px;
+    border-top: 2px solid var(--ink);
+    padding-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+  <div class="frame">
+    <div class="topbar">
+      <div class="name">Sarun (Joe) Teeravechyan</div>
+      <div class="nav">
+        <span>Engagements</span>
+        <span>AI Practice</span>
+        <span>Curriculum Vitae</span>
+        <span>Contact</span>
+      </div>
+    </div>
+
+    <section class="hero">
+      <div>
+        <div class="doc-id">Capabilities document &middot; March 2026</div>
+        <h1>Programs delivered. Systems built. Scale held.</h1>
+        <p class="lede">
+          Senior digital leader with twenty years of experience executing
+          high-visibility national programs across North America. Currently
+          focused on applying AI to transform how digital systems are
+          designed, operated, and scaled.
+        </p>
+        <div class="meta">
+          <div>Sector<strong>QSR &middot; Promotion &middot; Loyalty</strong></div>
+          <div>Geography<strong>North America</strong></div>
+          <div>Status<strong>Open to senior roles</strong></div>
+        </div>
+      </div>
+      <aside class="summary-card">
+        <div class="label">Engagement summary</div>
+        <h3>Three-decade track record. National scale. Live operations.</h3>
+        <ul>
+          <li><strong>Years leading delivery</strong>20+</li>
+          <li><strong>National programs</strong>30+</li>
+          <li><strong>Users supported</strong>10M+</li>
+          <li><strong>System uptime, peak</strong>maintained</li>
+        </ul>
+        <a class="cta" href="#">Download capabilities &rarr;</a>
+      </aside>
+    </section>
+
+    <section class="exhibit">
+      <div class="exhibit-head">
+        <div class="exhibit-num">Exhibit 01</div>
+        <div class="exhibit-title">Track record at scale</div>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-cell">
+          <div class="figure">20<sup>+</sup></div>
+          <div class="bar" style="--w: 90%"></div>
+          <div class="desc">Years leading complex digital execution across product, engineering, and operations.</div>
+        </div>
+        <div class="stat-cell">
+          <div class="figure">30<sup>+</sup></div>
+          <div class="bar" style="--w: 75%"></div>
+          <div class="desc">National-scale promotional and digital programs delivered across North America.</div>
+        </div>
+        <div class="stat-cell">
+          <div class="figure">10<sup>M+</sup></div>
+          <div class="bar" style="--w: 95%"></div>
+          <div class="desc">End-users supported in live, real-time systems during peak operating windows.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="exhibit">
+      <div class="exhibit-head">
+        <div class="exhibit-num">Exhibit 02</div>
+        <div class="exhibit-title">Selected engagements (de-identified)</div>
+      </div>
+      <div class="case-table">
+        <div class="case-row">
+          <div class="idx">01</div>
+          <div class="title">National digital promotion at ticketless scale<small>First-time fully digital participation across the U.S. for a global QSR brand.</small></div>
+          <div class="impact">Repeatable execution model adopted for future programs; high system uptime under peak load.</div>
+          <div class="scale">Multi-million users</div>
+        </div>
+        <div class="case-row">
+          <div class="idx">02</div>
+          <div class="title">Real-time digital prize fulfillment<small>Replaced manual check fulfillment with secure API-based payouts at national scale.</small></div>
+          <div class="impact">Clean launch; first-time implementation with zero post-launch incidents in early operations.</div>
+          <div class="scale">National launch</div>
+        </div>
+        <div class="case-row">
+          <div class="idx">03</div>
+          <div class="title">Live program scaled under extreme demand<small>Real-time scaling of code inventory and fraud mitigation while program was running.</small></div>
+          <div class="impact">Avoided code depletion and legal risk; multi-fold demand absorbed without disruption.</div>
+          <div class="scale">Live operations</div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span>Sarun (Joe) Teeravechyan &middot; Selected Engagements 2026</span>
+      <span>Page 1 of 3</span>
+    </footer>
+  </div>
+</body>
+</html>

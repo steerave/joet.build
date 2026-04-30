@@ -5,6 +5,53 @@ Format follows [Keep a Changelog](https://keepachangelog.com).
 
 ---
 
+## [3.0.0] — 2026-04-30
+
+### Added
+- New `/work/[slug]` route: each case study now has its own page with full Challenge / What I Did / Impact / Insight read, hero image, and per-page metadata
+- Selected Work on the home page is now a fast-skim list — kicker · title · summary · arrow — with hover slide
+- Availability pill in hero with green-dot indicator: "Open to senior digital leadership roles"
+- "Download CV" button in hero, in CTA section, and "Curriculum Vitae" button in nav (all link to `/Joe_Teeravechyan_Resume.pdf`)
+- Real footer links: LinkedIn, GitHub, Email (replaces dead one-line copyright)
+- `lib/case-studies.ts` — single source of truth for case study data, used by home list and detail pages
+- New components: `CaseStudyListItem` (home row), `CaseStudyDetail` (full read)
+
+### Changed
+- Complete v3 redesign: "Quiet executive" — closer to Linear/Vercel marketing aesthetic, stripped of developer-portfolio cosplay
+- Fonts: Anybody + DM Mono → **Inter Tight** (display) + **Inter** (body); DM Mono usage removed entirely
+- Background: `#080808` → `#0B0B0F` (slightly tinted toward cool blue per "no pure black" rule)
+- All text tokens recolored and verified to pass ≥4.5:1 contrast: `--color-text-primary` `#ECECF0` (was `#ffffff`), `--color-text-body` `#A6A6B0` (was `#999999`), `--color-text-muted` `#80808B` (was `#777777`)
+- Nav: `SJT` mono monogram → "Sarun Teeravechyan" wordmark in Inter Tight; added "Curriculum Vitae" button
+- Hero: removed terminal breadcrumb (`~/portfolio · main ›`), removed mouse-tracking spotlight grid, removed ambient glow
+- Credibility Strip: removed scroll-triggered count-up animation; numbers are now static
+- AI Projects cards: removed numbered indices (01/02/03), removed `border-l-[3px]` side stripe; whole card is now a link
+- About: switched from centered single-column to two-column (heading left, prose right) on desktop
+- CTA section: removed radial glow intersection animation; ghost button colors fixed for AA contrast
+- Case study layout: from 3 alternating inline sections to 1 list + 3 detail pages
+
+### Fixed
+- WCAG AA contrast failures across the v2.0 build:
+  - Hero "Connect" link `#444` (1.94:1) → token-driven, passes AA
+  - CTA "Email" button `#444` (1.94:1) → token-driven, passes AA
+  - Footer copyright `#2e2e2e` (1.21:1, effectively invisible) → `--color-text-muted` `#80808B`
+  - Hero breadcrumb `#1e1e1e` / `#1a2a3a` (~1.0:1, invisible) → element removed
+  - Hero disclaimer `#666` (~4.0:1) → element removed
+- Removed hardcoded hex values across all components (Hero, CTA, Footer, Nav) — all colors now flow from `@theme` tokens
+
+### Removed
+- `components/WhatIDo.tsx` — platitude cards added no information beyond hero + about
+- `components/CaseStudy.tsx` — replaced by detail-page pattern
+- Narrative summary block in `app/page.tsx` (post-case-studies)
+- "How This Site Was Built" reflective note
+- 5 instances of `border-l-[Npx]` side-stripe borders across `WhatIDo`, `AIProjects`, `CaseStudy` (Impact + Insight), `page.tsx` narrative
+- Mono section eyebrows on every section (CASE STUDIES / EXPERTISE / PROJECTS / ABOUT / CONNECT)
+- Anybody and DM Mono fonts
+- Section-glow gradient dividers
+- Count-up animation logic and dependencies
+- `--color-bg` tinting toward pure `#080808`
+
+---
+
 ## [2.0.0] — 2026-04-10
 
 ### Added

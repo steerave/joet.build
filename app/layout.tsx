@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
-import { Anybody, DM_Mono } from "next/font/google";
+import { Inter, Inter_Tight } from "next/font/google";
 import "./globals.css";
 
-const anybody = Anybody({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["200", "300", "400", "700", "900"],
-  variable: "--font-anybody",
+  weight: ["400", "500"],
+  variable: "--font-inter",
   display: "swap",
 });
 
-const dmMono = DM_Mono({
+const interTight = Inter_Tight({
   subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-dm-mono",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-inter-tight",
   display: "swap",
 });
 
@@ -34,9 +34,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${anybody.variable} ${dmMono.variable}`}>
+    <html lang="en" className={`${inter.variable} ${interTight.variable}`}>
       <body className="font-sans antialiased">
-        {/* Skip to main content — WCAG 2.4.1 */}
         <a
           href="#hero"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded focus:bg-accent focus:px-4 focus:py-2 focus:text-sm focus:font-bold focus:text-white focus:outline-none"

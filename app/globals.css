@@ -1,21 +1,23 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #080808;
-  --color-surface: #111111;
-  --color-elevated: #1a1a1a;
-  --color-border: #1e1e1e;
-  --color-text-primary: #ffffff;
-  --color-text-body: #999999;
-  --color-text-muted: #777777;
+  --color-bg: #0B0B0F;
+  --color-surface: #14141A;
+  --color-elevated: #1C1C24;
+  --color-border: #22222B;
+  --color-border-strong: #2D2D38;
+  --color-text-primary: #ECECF0;
+  --color-text-body: #A6A6B0;
+  --color-text-muted: #80808B;
   --color-accent: #5b8fd4;
   --color-accent-light: #7aaee0;
+  --color-success: #4ED68A;
 
-  --max-width-content: 1200px;
-  --max-width-about: 680px;
+  --max-width-content: 1080px;
+  --max-width-prose: 720px;
 
-  --font-sans: var(--font-anybody), sans-serif;
-  --font-mono: var(--font-dm-mono), monospace;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-display: var(--font-inter-tight), system-ui, sans-serif;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -27,16 +29,15 @@
   body {
     background-color: var(--color-bg);
     color: var(--color-text-body);
+    font-family: var(--font-sans);
   }
 
-  /* Visible focus ring for keyboard navigation (WCAG 2.4.7) */
   :focus-visible {
     outline: 2px solid var(--color-accent);
     outline-offset: 3px;
     border-radius: 2px;
   }
 
-  /* Screen-reader-only utility */
   .sr-only {
     position: absolute;
     width: 1px;
@@ -50,11 +51,12 @@
   }
 }
 
-/* ─── Scroll reveal animations ─────────────────────────────────────────────── */
 @layer utilities {
+  .font-display { font-family: var(--font-display); }
+
   .anim {
     opacity: 0;
-    transition-property: all;
+    transition-property: opacity, transform;
     transition-duration: 700ms;
     transition-timing-function: var(--ease-out-expo);
   }
@@ -62,91 +64,35 @@
     opacity: 1;
     transform: translateX(0) translateY(0) scale(1);
   }
-  .anim-fade-up    { transform: translateY(30px); }
-  .anim-fade-left  { transform: translateX(-40px); }
-  .anim-fade-right { transform: translateX(40px); }
-  .anim-scale-up   { transform: scale(0.92); }
-  .anim-slide-left { transform: translateX(-30px); }
+  .anim-fade-up    { transform: translateY(24px); }
+  .anim-fade-left  { transform: translateX(-24px); }
+  .anim-fade-right { transform: translateX(24px); }
+  .anim-scale-up   { transform: scale(0.96); }
+  .anim-slide-left { transform: translateX(-24px); }
 }
 
-/* Stagger delays */
 .delay-100 { transition-delay: 0.1s; }
 .delay-200 { transition-delay: 0.2s; }
 .delay-300 { transition-delay: 0.3s; }
 .delay-400 { transition-delay: 0.4s; }
 .delay-500 { transition-delay: 0.5s; }
 
-/* ─── Hero entrance animations ──────────────────────────────────────────────── */
 @keyframes heroFadeUp {
-  from { opacity: 0; transform: translateY(24px); }
+  from { opacity: 0; transform: translateY(16px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-.hero-animate-1 { opacity: 0; animation: heroFadeUp 0.9s var(--ease-out-expo) 0.15s forwards; }
-.hero-animate-2 { opacity: 0; animation: heroFadeUp 0.9s var(--ease-out-expo) 0.35s forwards; }
-.hero-animate-3 { opacity: 0; animation: heroFadeUp 0.9s var(--ease-out-expo) 0.55s forwards; }
-.hero-animate-4 { opacity: 0; animation: heroFadeUp 0.9s var(--ease-out-expo) 0.70s forwards; }
+.hero-animate-1 { opacity: 0; animation: heroFadeUp 0.7s var(--ease-out-expo) 0.10s forwards; }
+.hero-animate-2 { opacity: 0; animation: heroFadeUp 0.7s var(--ease-out-expo) 0.25s forwards; }
+.hero-animate-3 { opacity: 0; animation: heroFadeUp 0.7s var(--ease-out-expo) 0.40s forwards; }
+.hero-animate-4 { opacity: 0; animation: heroFadeUp 0.7s var(--ease-out-expo) 0.55s forwards; }
 
-/* ─── Infinite grid (adapted from the-infinite-grid component) ──────────────── */
-/* Diagonal scroll keyframe — both layers share the same animation so they
-   stay perfectly in phase. Background-position scrolls by one tile (40×40px). */
-@keyframes gridScroll {
-  0%   { background-position: 0 0; }
-  100% { background-position: 40px 40px; }
-}
-
-/* Base layer — always visible, very faint amber lines */
-.hero-grid-base {
-  background-image:
-    linear-gradient(rgba(91, 143, 212, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(91, 143, 212, 0.04) 1px, transparent 1px);
-  background-size: 40px 40px;
-  animation: gridScroll 6s linear infinite;
-}
-
-/* Spotlight layer — brighter grid revealed only at mouse cursor position.
-   --mouse-x / --mouse-y are set via JS on onMouseMove.
-   Default of -9999px keeps the spotlight off-screen until the user moves. */
-.hero-grid-spotlight {
-  background-image:
-    linear-gradient(rgba(91, 143, 212, 0.18) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(91, 143, 212, 0.18) 1px, transparent 1px);
-  background-size: 40px 40px;
-  animation: gridScroll 6s linear infinite;
-  mask-image: radial-gradient(
-    350px circle at var(--mouse-x, -9999px) var(--mouse-y, -9999px),
-    black,
-    transparent
-  );
-  -webkit-mask-image: radial-gradient(
-    350px circle at var(--mouse-x, -9999px) var(--mouse-y, -9999px),
-    black,
-    transparent
-  );
-}
-
-/* ─── Section glow divider ──────────────────────────────────────────────────── */
-.section-glow {
-  height: 1px;
-  max-width: var(--max-width-content);
-  margin: 0 auto;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(91, 143, 212, 0.18) 50%,
-    transparent 100%
-  );
-}
-
-/* ─── Reduced motion ────────────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .anim,
   .hero-animate-1,
   .hero-animate-2,
   .hero-animate-3,
-  .hero-animate-4,
-  .hero-grid-base,
-  .hero-grid-spotlight {
+  .hero-animate-4 {
     opacity: 1 !important;
     transform: none !important;
     animation: none !important;
